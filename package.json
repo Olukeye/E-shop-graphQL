@@ -1,0 +1,16 @@
+{
+  "name": "e-market-graphQL",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev":"nodemon server.js"
+  },
+  "author": "Olukeye",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^3.6.1",
+    "graphql": "^16.2.0",
+    "nodemon": "^2.0.15"
+  }
+}
