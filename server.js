@@ -1,5 +1,5 @@
 const {ApolloServer, gql } = require("apollo-server");
-
+import { typeDefs } from "./type.schema";
 
 // categories
 const categories = [
@@ -64,31 +64,7 @@ const jobs = [
         location:"Lagos, Nigeria"
     },
 ]
-const typeDefs = gql `
-   type Query{
-       hello: String,
-       jobs:[Job!]!         ##get all jobs
-       job(id:ID!):Job    ##getting a single job by its id
-       categories:[Category!]!      ##get all categories
-       category(id:ID!):Category    ## get a single category by id
-   }
 
-   type Job {
-        id:ID!
-        title:String!
-        company:String!
-        description:String!
-        role:String!
-        amount:String!
-        location:String!
-},
-
-type Category {
-    id: ID!
-    name:String!
-}
-
-`;
 const resolvers = {
     Query: {
         hello: () => {
