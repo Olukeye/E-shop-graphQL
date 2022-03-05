@@ -1,5 +1,5 @@
-const {ApolloServer, gql } = require("apollo-server");
-import { typeDefs } from "./type.schema";
+const {ApolloServer } = require("apollo-server");
+const { typeDefs } = require("./type.schema");
 
 // categories
 const categories = [
@@ -15,6 +15,10 @@ const categories = [
         id:"t564083-er7l-8098-k7475665n40126723h",
         name:"Banking"
     },
+    {
+        id:"t564082-er7l-8096-k7475665n40126723e",
+        name:"Engineering"
+    },
 ]
 // Jobs
 const jobs = [
@@ -25,7 +29,8 @@ const jobs = [
         description:"We are looking for dynamic, energetic interns who are eager  to join FlexiSAF where they will be fully immersed into the world of software development.",
         role: "Junior",
         amount:500000,
-        location:"Lagos, Nigeria"
+        location:"Lagos, Nigeria",
+        categoryId: "9h3n6gf-987l-6547-665756656vt89023h4"
     },
     {
         id:"646gfgf-t65i-7bv7-665756656vt656fv7",
@@ -34,7 +39,8 @@ const jobs = [
         description:"IT Support Officer ResponsibilitiesMainly responsible for the smooth running of computer systems, routers, switches, internet and ensure users get maximum benefits from them.",
         role: "Training",
         amount:50000,
-        location:"Lagos, Nigeria"
+        location:"Lagos, Nigeria",
+        categoryId: "9h3n6gf-987l-6547-665756656vt89023h4"
     },
     {
         id:"646gfgf-t65i-7bv7-6657-56656vt09gd84",
@@ -43,7 +49,8 @@ const jobs = [
         description:"This job aims to help the employer in personal, professional, and spiritual areas.",
         role: "Training",
         amount:75000,
-        location:"Lagos, Nigeria"
+        location:"Lagos, Nigeria",
+        categoryId:"t564083-er7l-8098-k7475665n40126723h"
     },
     {
         id:"6473gh5-t65i-7bv7-6657-56656vt29hf43",
@@ -52,7 +59,8 @@ const jobs = [
         description:"To oversee all mechanical engineering operation and activities consisting of installation etc",
         role:"Technician",
         amount:120000,
-        location:"Lagos, Nigeria"
+        location:"Lagos, Nigeria",
+        categoryId:"t564082-er7l-8096-k7475665n40126723e"
     },
     {
         id:"646gfgf-t65i-7bv7-66575hd65kt29hf42",
@@ -61,7 +69,8 @@ const jobs = [
         description:"Lagos satet waste management .",
         role: "training",
         amount:65000,
-        location:"Lagos, Nigeria"
+        location:"Lagos, Nigeria",
+        categoryId:"20ate6j-987l-6fa7-gf56h4551vt89023h4"
     },
 ]
 
@@ -78,7 +87,7 @@ const resolvers = {
         job: (parant, args, context)=> {
             const {id} = args;
             // find job from [ jobs ] where jobID matches searched job
-            return job =  jobs.find( (job) => job.id === id);
+            return job =  jobs.find((job) => job.id === id);
         },
         // List Categories
         categories: (parant, args, context) => categories,
@@ -86,13 +95,18 @@ const resolvers = {
             const {id} = args;
             return category = categories.find((category) => category.id === id)
         }
+    },
+    // Relating products to their category
+    Category: {
+        jobs: (parent, args, context) => {
+            console.log(parent)
+        }  
     }
 }
 const server = new ApolloServer({
 typeDefs,
 resolvers
 });
-
 
 
 server.listen().then(({url}) => {

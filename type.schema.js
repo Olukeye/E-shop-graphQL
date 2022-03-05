@@ -1,3 +1,6 @@
+const { gql } = require("apollo-server");
+
+
 exports.typeDefs = gql `
 type Query{
     hello: String,
@@ -13,13 +16,14 @@ type Job {
      company:String!
      description:String!
      role:String!
-     amount:String!
+     amount:Int!
      location:String!
+     category:Category!
 },
-
 type Category {
  id: ID!
  name:String!
+ jobs:[Job!]!
 }
 
 `;
