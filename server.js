@@ -98,9 +98,17 @@ const resolvers = {
     },
     // Relating products to their category
     Category: {
-        jobs: (parent, args, context) => {
-            console.log(parent)
+        jobs: (parent, args, context) => {   
+            const categoryId = parent.id;
+            return jobs.filter((job) => job.categoryId === categoryId);
         }  
+    },
+    // relating category under a product(category under product)
+    Job: {
+        category:(parent, args, context) => {
+            const categoryId = parent.categoryId;
+            return categories.find((category) => category.id === categoryId);
+        }
     }
 }
 const server = new ApolloServer({
