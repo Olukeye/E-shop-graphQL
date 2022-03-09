@@ -3,7 +3,7 @@ const { typeDefs } = require("./type.schema");
 const { Query } = require('./resolvers/query');
 const { Job } = require('./resolvers/job');
 const { Category } = require('./resolvers/category');
-
+const {categories, jobs} = require('./db');
 
 
 const server = new ApolloServer({
@@ -12,6 +12,10 @@ resolvers: {
     Query,
     Job,
     Category
+},
+context: {
+    categories,
+    jobs
 }
 });
 

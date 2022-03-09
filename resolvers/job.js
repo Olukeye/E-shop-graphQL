@@ -1,8 +1,7 @@
-const { categories } = require('../db');
 
 exports.Job = {
-    category:(parent, args, context) => {
-        const categoryId = parent.categoryId;
+    // list category related to a job
+    category:({categoryId}, args, {categories}) => {
         return categories.find((category) => category.id === categoryId);
     }
 }
