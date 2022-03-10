@@ -1,9 +1,6 @@
 const {jobs, categories} = require('../db');
 
 exports.Query = {
-    hello: () => {
-        return "Hello GraghQL" 
-    }, 
     // get all jobs
     jobs: (parant, args, context)=> {
         return jobs
