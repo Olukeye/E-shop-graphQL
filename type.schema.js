@@ -11,6 +11,8 @@ type Query{
 
 type Mutation {
     createCategory(input: createCategoryInput!) : Category!
+    createJob(input: createJobInput!) : Job!
+
 }
 
 type Job {
@@ -27,6 +29,20 @@ type Category {
  id: ID!
  name:String!
  jobs:[Job!]!
+},
+
+input createCategoryInput {
+    name: String!
+},
+
+input createJobInput {
+     title:String!
+     company:String!
+     description:String!
+     role:String!
+     amount:Int!
+     location:String!
+     categoryId : String!
 }
 
 `;

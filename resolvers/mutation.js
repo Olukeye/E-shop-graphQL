@@ -5,7 +5,7 @@ exports.Mutation = {
         const { name } = input;
 
         const newCategory = {
-            id: uuid,
+            id: uuid(),
             name
         }
 
@@ -13,4 +13,16 @@ exports.Mutation = {
 
     return newCategory;
     },
-}
+
+    createJob : ( parent, {input}, {jobs}) => {
+        const { title,company, description,role, amount, location, categoryId } = input;
+        const addNewJob = {
+            id: uuid(), 
+             title, company, description,role, amount, location, categoryId 
+        }
+
+        jobs.push(addNewJob);
+
+        return addNewJob;
+    }
+} 
