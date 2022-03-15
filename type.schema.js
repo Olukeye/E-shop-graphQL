@@ -12,7 +12,8 @@ type Query{
 type Mutation {
     createCategory(input: createCategoryInput!) : Category!
     createJob(input: createJobInput!): Job!
-
+    deleteJob(id:ID): Boolean!
+    deleteCategory(id: ID) : Boolean!
 }
 
 type Job {
