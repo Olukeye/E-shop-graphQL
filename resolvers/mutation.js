@@ -1,7 +1,7 @@
 const {v4: uuid} = require('uuid');
 
 exports.Mutation = {
-    createCategory: (parent, {input}, {categories}) => {
+    createCategory: (parent, {input}, {db}) => {
         const { name } = input;
 
         const newCategory = {
@@ -9,19 +9,19 @@ exports.Mutation = {
             name
         }
 
-    categories.push(newCategory);
+    db.categories.push(newCategory);
 
     return newCategory;
     },
 
-    createJob : ( parent, {input}, {jobs}) => {
+    createJob : ( parent, {input}, {db}) => {
         const { title,company, description,role, amount, location, categoryId } = input;
         const addNewJob = {
             id: uuid(), 
              title, company, description,role, amount, location, categoryId 
         }
 
-        jobs.push(addNewJob);
+        db.jobs.push(addNewJob);
 
         return addNewJob;
     }

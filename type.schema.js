@@ -11,7 +11,7 @@ type Query{
 
 type Mutation {
     createCategory(input: createCategoryInput!) : Category!
-    createJob(input: createJobInput!) : Job!
+    createJob(input: createJobInput!): Job!
 
 }
 
@@ -23,7 +23,7 @@ type Job {
      role:String!
      amount:Int!
      location:String!
-     category:Category!
+     category:Category
 },
 type Category {
  id: ID!

@@ -1,20 +1,20 @@
-const {jobs, categories} = require('../db');
+const {db} = require('../db');
 
-exports.Query = {
+exports.Query = { 
     // get all jobs
-    jobs: (parant, args, context)=> {
-        return jobs
+    jobs: (parant, args, {db})=> {
+        return db.jobs;
     },
     // get single job
-    job: (parant, args, context)=> {
+    job: (parant, args, {db})=> {
         const {id} = args;
         // find job from [ jobs ] where jobID matches searched job
-        return job =  jobs.find((job) => job.id === id);
+        return job =  db.jobs.find((job) => job.id === id);
     },
     // List Categories
-    categories: (parant, args, context) => categories,
-    category:(parant, args, context) => {
+categories: (parant, args, {db}) => db.categories,
+    category:(parant, args, {db}) => {
         const {id} = args;
-        return category = categories.find((category) => category.id === id)
+        return category = db.categories.find((category) => category.id === id)
     }
 }

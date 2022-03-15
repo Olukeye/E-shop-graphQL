@@ -71,7 +71,7 @@ const jobs = [
     },
 ]
 
-module.exports = {
+exports.db= {
     jobs,
     categories
 }
